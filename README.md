@@ -1,4 +1,4 @@
-# Generative Adversarial Network for data augmentation in multi-modal deeplearing
+# GAN for data augmentation in multi-modal deeplearing
 
 ## 실험 소개 
 Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이터 증강에 대한 실험:
