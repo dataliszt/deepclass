@@ -1,10 +1,10 @@
 # Generative Adversarial Network for data augmentation in multi-modal deeplearing
 
 ## 실험 소개 
-본 연구는 멀티 모달리티 데이터를 어그멘테이션 하는 방법으로써 각 개별 모달리티의 어그멘테이션이 아닌, 멀티 모달리티의 적절한 Common Embedding Space 찾은 후, 
-해당 Space에서 GAN을 통해 데이터를 어그멘테이션 하는 방식을 제안한다. 데이터 어그멘테이션은 이미지 데이터에 활발히 사용되고 있으나, 시계열 데이터에 적용하기에
-제한적인 사항이 많다. 본 연구에서 제안하는 방법은 데이터 어그멘테이션이 어려운 모달리티들을 적절한게 embedding 시키고, 이러한 Common Space로부터 데이터 증강을 
-진행한다. 제안한 방법론을 통해 멀티 모달 분류 과제의 성능이 향상됨을 확인할 수 있었다. 
+Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이터 증강에 대한 실험:
+- 각 개별 모달리티의 어그멘테이션이 아닌, 멀티 모달리티의 적절한 Common Embedding Space 찾은 후, GAN을 통해 해당 space에서 데이터를 생성하는 방식 
+- 데이터 어그멘테이션은 이미지 데이터에 활발히 사용되고 있으나, 시계열 데이터에 적용하기에 제한적인 사항이 많음 
+- 본 실험에서 제안하는 방법은 데이터 어그멘테이션이 어려운 모달리티를 common space projection 시키고, 이러한 common Space로부터 데이터를 생성하는 방식  
 
 
 ## 제안 방법 - 모델 파이프라인 
