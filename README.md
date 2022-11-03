@@ -37,14 +37,9 @@ Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이�
 
 |         Model(Method)         |        F1 SCORE(MICRO)      |
 |-------------------------------|-----------------------------|
-|Baseline (No AUGMENTATION)     |           `0.9024`          |
-|Baseline + GAN AUGMENTATION    |           `0.9212`          |
-
-|          |Model(method) | F1 score(micro) |
-|----------|:----:|:---:|
-|  SupCrossEntropy |  90.24  |
-|  SupContrast     |  92.12  | 
-
+|-------------------------------|-----------------------------|
+|Baseline (No AUGMENTATION)     |           90.24             |
+|Baseline + GAN AUGMENTATION    |           92.12             |
 
 
 ## 파일 설명 
