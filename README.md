@@ -10,25 +10,25 @@ Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이�
 ## 제안 방법 - 모델 파이프라인 
 <p align="center"><img src="assets/proposed_method.png" width="680"\></p>
 
-본 연구에서 제안하는 모델 파이프라인은 다음과 같다. 
+실험에 적용된 모델 파이프라인은 다음과 같다. 
 
-- 먼저 Convolution Neural Network(이하 CNN)와 Recurrent Neural Network(이하 RNN)를 통해 이미지와 생육 데이터 csv파일을 input으로 받아 처리한다. 이때 각각의 Network는 각 모달리티 데이터를 축소하게되며, 위의 그림에서와 같이 **Common Embedding Space**에서 하나의 데이터로 concat하게 된다. 이는 서로 다른 모달리티의 데이터가 **하나의 space로 embedding** 된다는 의미로 볼 수 있다. 
+- 먼저 Convolution Neural Network(이하 CNN)와 Recurrent Neural Network(이하 RNN)를 통해 이미지와 생육 데이터 csv파일을 input으로 받아 처리한다. 이때 각 모델은 feature extraction하는 인코더로써 사용됨. 위의 그림과 같이 **common embedding space**에서 feature concatenation하게 됨. 서로 다른 모달리티의 데이터가 **하나의 space로 embedding** 되는 과정임.
 
-- concat된 데이터는 Generative Adversarial Network(이하 GAN)의 input으로 들어가게된다. 이렇게 embedding space가 잘 형성된다면 즉, **서로 다른 모달리티의 데이터가 잘 축소되고 결합되어 적절한 representation을 갖는다면**, **GAN과 해당 embedding space를 활용하여 새로운 데이터를 생성**할 수 있을 것이다.  
+- Feature concatenation된 데이터는 Generative Adversarial Network(이하 GAN)의 Discriminator의 real label로 사용됨. 이렇게 embedding space가 잘 형성된다면 즉, **서로 다른 모달리티의 데이터가 잘 축소되고 결합되어 적절한 representation이 생성된다면**, **GAN과 해당 embedding space를 활용하여 새로운 데이터를 생성**할 수 있음. 
 
-- 이후 **원본 데이터(X_train)**와 **GAN을 통해 생성된 새로운 데이터(generated_data)**를 합하여 새롭게 분류 task를 진행하게 된다. 이는 **Data Augmentation**이라 할 수 있으며, 특히 멀티 모달리티의 **Common Space로부터 데이터를 생성한 것이기 때문에**, Data Augmentation이 제한적인 모달리티의 Augmentation을 새로운 방식으로 진행한 것이라 할 수 있다.  
+- 이후 **원본 데이터(X_train)**와 **GAN을 통해 생성된 새로운 데이터(generated_data)**를 합하여 새롭게 분류 task를 진행하게 됨. 이는 **Data Augmentation**이라 할 수 있으며, 특히 멀티 모달리티의 **common Space로부터 데이터를 생성한 것이기 때문에**, Data Augmentation이 제한적인 모달리티의 augmentation을 common space projection을 통해 진행한 것으로 볼 수 있음.
 
 
 ## 실험 데이터 
 <p align="center"><img src="assets/data_explain.png" width="680"\></p>
 
-본 연구에서는 데이콘과 LG에서 제공하는 [농업 환경 변화에 따른 작물 병해 진단](https://dacon.io/competitions/official/235870/overview/description) 데이터를 활용하였다.
+본 실험에서는 데이콘과 LG에서 제공하는 [농업 환경 변화에 따른 작물 병해 진단](https://dacon.io/competitions/official/235870/overview/description) 데이터를 활용하였음.
 
-- 데이터는 작물들의 정상 및 질병 상태를 나타내고 있다. 질병은 초기/중기/말기 3 단계로 이루어져 있다. 
+- 데이터는 작물들의 정상 및 질병 상태를 나타내고 있음. 질병은 초기/중기/말기 3 단계로 이루어져 있음. 
 - 이미지 데이터 : 작물 또는 작물들의 잎사귀 
 - csv 데이터 : 작물들의 시계열 생육정보 
 
-    > 본 실험에서는 파프리카 작물에 대한 데이터만 선정하여 실험을 진행했다. 파프리카 작물 데이터가 정상 및 질병의 초기/중기/말기로 잘 구분되어 있기 때문이다. 
+    > 본 실험에서는 파프리카 작물에 대한 데이터만 선정하여 실험을 진행했음. 파프리카 작물 데이터가 정상 및 질병의 초기/중기/말기로 잘 구분되어 있기 때문임. 
 
  
 ## 실험 결과 
@@ -39,6 +39,12 @@ Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이�
 |-------------------------------|-----------------------------|
 |Baseline (No AUGMENTATION)     |           `0.9024`          |
 |Baseline + GAN AUGMENTATION    |           `0.9212`          |
+
+|          |Model(method) | F1 score(micro) |
+|----------|:----:|:---:|
+|  SupCrossEntropy |  90.24  |
+|  SupContrast     |  92.12  | 
+
 
 
 ## 파일 설명 
