@@ -36,7 +36,6 @@ Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이�
 실험 결과 기존 딥러닝 Baseline 모델을 통해 분류 Task를 진행한 것 보다, 제안한 방법인 **GAN AUGMENTATION**을 활용한 것이 더 높은 분류 성능이 나온다는 것을 확인할 수 있었다.
 
 |         Model(Method)         |        F1 SCORE(MICRO)      |
-|----------|:----:|:---:|:---:|:---:|
 |-------------------------------|-----------------------------|
 |Baseline (No AUGMENTATION)     |           90.24             |
 |Baseline + GAN AUGMENTATION    |           92.12             |
@@ -44,11 +43,11 @@ Generative Adversarial Network(이하 GAN)을 사용하여 멀티 모달 데이�
 
 ## 파일 설명 
 
-- etc_file : Train data의 생육환경 Feature들의 MinMax 값 저장 (csv_feature_dict3.pickle) | 라벨 데이터 (json_files3.pickle)
+- etc_file : Train data의 생육환경 feature들의 MinMax 값 저장 (csv_feature_dict3.pickle) | 라벨 데이터 (json_files3.pickle)
 
 - generated_data : GAN을 통해 생성된 데이터 
 
-- pca_data : Baseline의 인코더 파트만을 분리해 X_train 데이터를 차원축소한 데이터. 이는 GAN으로 부터 생성된 데이터와 같은 크기의 차원으로 축소되며, 추후 해당 데이터와 GAN데이터를 결합하여(이는 데이터 증강이라 볼 수 있음) 분류 task를 진행 
+- pca_data : Baseline의 인코더 파트만을 분리해 X_train 데이터를 차원축소한 데이터. 이는 GAN으로 부터 생성된 데이터와 같은 크기의 차원으로 축소되며, 추후 해당 데이터와 GAN 데이터를 결합하여(데이터 증강이라 볼 수 있음) 분류 task를 진행 
 
 - model_save 
     - CNN2RNN.pt : Baseline 모델 
