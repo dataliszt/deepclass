@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/front.png" width="680"\></p>
+# Generative Adversarial Network for data augmentation in multi-modal deeplearing
 
 ## 실험 소개 
 본 연구는 멀티 모달리티 데이터를 어그멘테이션 하는 방법으로써 각 개별 모달리티의 어그멘테이션이 아닌, 멀티 모달리티의 적절한 Common Embedding Space 찾은 후, 
